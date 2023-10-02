@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Article List</title>
+</head>
+<body>
+    <a href="/articleForm">글작성</a>
+    <a href="/logout">로그아웃</a>
+    
+    <div id="articleList"></div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function fetchArticles() {
+        $.ajax({
+            url: '/api/articleList', // 게시글을 가져올 URL
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                $('#articleList').empty();
+                
+                $.each(data, function(index, article) {
+                    var articleHTML = `
+                        <div class="article">
+							<h2><a href="/main/article/${article.id}">${article.title}</a></h2>
+                            <p>${article.stack}</p>
+                        </div>
+                    `;
+                    $('#articleList').append(articleHTML);
+                });
+            },
+            error: function() {
+                console.log('오류 발생');
+            }
+        });
+    }
+    
+    $(document).ready(function() {
+        fetchArticles();
+    });
+</script>
+
+</html>

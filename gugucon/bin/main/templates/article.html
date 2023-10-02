@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시글 보기</title>
+</head>
+<body>
+    <h2>게시글 상세</h2>
+    <p><strong>제목:</strong> <span th:text="${article.title}"></span></p>
+    <p><strong>내용:</strong> <span th:text="${article.content}"></span></p>
+    <p><strong>작성자:</strong> <span th:text="${member.memberId}"></span></p>
+    <p><strong>기술스택:</strong>
+    	<ul th:each="tech : ${article.stack}">
+        	<li th:text="${tech}"></li>
+    	</ul>
+	</p>
+	
+    <a th:href="@{'/main/article/' + ${article.id} + '/edit'}">수정</a>
+    <a th:href="@{'/main/article/' + ${article.id} + '/delete'}">삭제</a>
+    
+    <h3>댓글</h3>
+	<ul th:each="comment : ${comments}">
+    	<li>
+        	<span th:text="${comment.member.memberId}"></span>: <span th:text="${comment.content}"></span>
+    	</li>
+	</ul>
+
+	<h3>댓글 작성하기</h3>
+	<form th:action="@{'/article/' + ${article.id} + '/addComment'}" method="post">
+    	<textarea name="content" required placeholder="댓글 내용을 입력하세요"></textarea>
+    	<input type="submit" value="댓글 작성">
+	</form>
+</body>
+</html>

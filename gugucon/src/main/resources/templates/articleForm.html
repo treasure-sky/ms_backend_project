@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Article</title>
+</head>
+<body>
+    <h2>Create New Article</h2>
+    <form action="/articleCreate" method="post">
+        Title: <input type="text" name="title"><br>
+        Content: <textarea name="content"></textarea><br>
+        
+        Stack: <select multiple="multiple" size="5" name="stack">
+			<option>java</option>
+			<option>python</option>
+			<option>c</option>
+			<option>c++</option>
+			<option>django</option>
+			<option>flask</option>
+			<option>fastapi</option>
+			<option>react</option>
+			<option>vue</option>
+		</select><br>
+        
+        <input type="submit" value="Create">
+    </form>
+</body>
+</html>

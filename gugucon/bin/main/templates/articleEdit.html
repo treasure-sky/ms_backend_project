@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Article</title>
+</head>
+<body>
+    <h2>Edit Article</h2>
+    <form th:action="@{/main/article/{id}/update(id=${article.id})}" th:object="${article}" method="post">
+        Title: <input type="text" th:field="*{title}" name="title"><br>
+        Content: <textarea th:field="*{content}" name="content"></textarea><br>
+        Stack: <select multiple="multiple" size="5" name="stack">
+			<option>java</option>
+			<option>python</option>
+			<option>c</option>
+			<option>c++</option>
+			<option>django</option>
+			<option>flask</option>
+			<option>fastapi</option>
+			<option>react</option>
+			<option>vue</option>
+		</select><br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>
