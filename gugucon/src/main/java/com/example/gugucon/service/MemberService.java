@@ -52,7 +52,7 @@ public class MemberService {
 	}
 	
 	public void signin(MemberDto memberDto) {
-		MemberEntity memberEntity = MemberDto.toMeberEntity(memberDto);
+		MemberEntity memberEntity = MemberDto.toMemberEntity(memberDto);
 		memberRepository.save(memberEntity);
 	}
 	

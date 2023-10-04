@@ -18,7 +18,7 @@ public class MemberDto {
 	private String memberId;
 	private String memberPassword;
 	
-	public static MemberEntity toMeberEntity(MemberDto memberDto) {
+	public static MemberEntity toMemberEntity(MemberDto memberDto) {
 		MemberEntity memberEntity = new MemberEntity();
 		
 		memberEntity.setId(memberDto.getId());
